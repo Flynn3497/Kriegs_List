@@ -1,50 +1,28 @@
 {% extends 'base.html' %}
-
 {% block content %}
-    <h2 style="text-align: center">{{ search | title }}</h2>
-<div class="container">
-    <div class="row">
-        <div class="col s4">
-            <div class="card">
-                <div class="card-image">
-                    <a href="/"><img src="https://i.pinimg.com/originals/d0/a3/2f/d0a32f32e59a80cf77ee79f428e305da.jpg" alt=""></a>
-                </div>
-                <div class="card-content">
-                    <p>TEST</p>
-                </div>
-                <div class="card-action">
-                    <a href="/">View listing: Price</a>
-                </div>
-            </div>
-        </div>
+    <h3 style="text-align: center"> You searched for: '{{ search | title }}'</h3>
+    <div class="container">
+        <div class="row">
+            {% for post in final_postings %}
 
-        <div class="col s4">
-            <div class="card">
-                <div class="card-image">
-                    <a href="/"><img src="https://i.pinimg.com/originals/d0/a3/2f/d0a32f32e59a80cf77ee79f428e305da.jpg" alt=""></a>
+                <div class="col s4">
+                    <div class="card" style="height: 26.7vw">
+                        <div class="card-image">
+                            <a href="{{ post.0 }}"><img
+                                    src="{{ post.2 }}"
+                                    alt="" style="height: 15vw"></a>
+                        </div>
+                        <div class="card-content" style="overflow:scroll">
+                            <p>{{ post.0 }}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ post.1 }}">View listing Price {{ post.3 }}</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <p>TEST</p>
-                </div>
-                <div class="card-action">
-                    <a href="/">View listing: Price</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col s4">
-            <div class="card">
-                <div class="card-image">
-                    <a href="/"><img src="https://i.pinimg.com/originals/d0/a3/2f/d0a32f32e59a80cf77ee79f428e305da.jpg" alt=""></a>
-                </div>
-                <div class="card-content">
-                    <p>TEST</p>
-                </div>
-                <div class="card-action">
-                    <a href="/">View listing: Price</a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
-</div>
+
 {% endblock content %}
+
